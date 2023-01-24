@@ -6,13 +6,30 @@ public class GamblingSimulationProblem {
     public static void main(String[] args) {
         System.out.println("Welcome to Gambling Simulation Program");
         int stake = 100;
-        int bet = 1;
+        int playCount = 0;
+        int wonCount = 0;
         Random random = new Random();
-        System.out.println("start with a stake of " + stake +" every day and bet " + bet +" every game.");
-        int num = random.nextInt(2);
+        while(stake != 151&& stake!= 49){
+            playCount++;
+
+            int num = random.nextInt(2);
         if (num == 1){
-            System.out.println("Gambler won the bet");
+            stake = stake + 1;
+            wonCount++;
         }else {
-            System.out.println("Gambler lost the bet");
-    }}
+            stake = stake -1 ;
+            System.out.println("Remaining stack is:"+stake);
+        }
+      }
+      if(stake > 150){
+          System.out.println("player win more than its 50 percent of stack");
+      }
+      else {
+          System.out.println("player looses more than its 50 percent of stack");
+      }
+
+        System.out.println("No of times Played:"+playCount);
+        System.out.println("No Of Times Won:"+wonCount);
+        System.out.println("No Of Times Lost:"+(playCount-wonCount));
+     }
 }
