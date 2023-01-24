@@ -8,25 +8,29 @@ public class GamblingSimulationProblem {
         int stake = 100;
         int playCount = 0;
         int wonCount = 0;
+        int lossCount = 0;
         Random random = new Random();
-        while(stake != 151&& stake!= 49){
+        int day = 0;
+        int forDay = 20;
+        for (int i= day;i<=forDay;i++){
             playCount++;
-
-            int num = random.nextInt(2);
-        if (num == 1){
-            stake = stake + 1;
-            wonCount++;
-        }else {
-            stake = stake -1 ;
-            System.out.println("Remaining stack is:"+stake);
+            int bet = random.nextInt(3);
+            switch (bet){
+                case 1:
+                    stake = stake + 1;
+                    wonCount++;
+                    System.out.println("player current money is "+stake);
+                    break;
+                case 2:
+                    stake = stake - 1;
+                    lossCount++;
+                    System.out.println("player loss bet so current money is "+stake);
+                    break;
+                default:
+                    System.out.println("player stop Gambling for a day");
+            }
+            System.out.println("current day "+ day++);
         }
-      }
-      if(stake > 150){
-          System.out.println("player win more than its 50 percent of stack");
-      }
-      else {
-          System.out.println("player looses more than its 50 percent of stack");
-      }
 
         System.out.println("No of times Played:"+playCount);
         System.out.println("No Of Times Won:"+wonCount);
